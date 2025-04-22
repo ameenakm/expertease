@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/menu.css">
+    <style>
+     
+    </style>
+</head>
+<body><div class="main">
+    <ul><li class="nm">ExpertEase</li>
+        <li><a href="\orders">orders</a></li>
+        <li><a href="\logout">logout</a></li>
+        
+    </ul>
+    <body>
+        <div class="menu-bar">
+            <ul class="category-list">
+                {% for category, sublist in category_map.items %}
+                    <li class="dropdown">
+                        <a href="#">{{ category.categoryname }}</a>
+                        {% if sublist %}
+                        <div class="dropdown-content">
+                            <ul>
+                                {% for sub in sublist %}
+                                    <li><a href="/freelancerdisplay?category={{ category.categoryname }}&subcategory={{ sub.subcategorynm }}">{{sub.subcategorynm }}</a> </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </body>
+    </html>
+   
+  
+    <div class="content"><h3>
+        welcome!
+    </h3><p>It is an online freelance marketplace designed to connect skilled professionals with businesses and individuals in need of services. Whether you're a designer, writer, developer, marketer, or consultant, this website provides a platform to showcase your expertise, attract clients, and complete projects securely.</p></div>
+    
+</div>
+
+</body>
+</html>

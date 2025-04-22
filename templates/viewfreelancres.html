@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Profile</title>
+    <link rel="stylesheet" href="/static/profile.css"> 
+</head>
+<body>
+    <div class="profile-container">
+       
+        <h2>Freelancer Profile</h2>
+        <div class="profile-details">
+            {% load static %}
+            <img src="{{freelancer.image.url }}" alt="Profile Image" width="100"><h3>{{ freelancer.name }}</h3>
+            
+            <p> {{ freelancer.email }}</p>
+            <p><strong>Place:</strong> {{ freelancer.place }}</p>
+            <p><strong>Category:</strong> {{ freelancer.category }}</p>
+            <p><strong>Specialisation:</strong> {{ freelancer.ys }}</p>
+            <p><strong>About Me:</strong> {{ freelancer.bi }}</p>
+            <img src="{{ freelancer.wimage.url }}" alt="{{ freelancer.name }}" width="300">
+            <p><strong>Work Introduction:</strong> {{ freelancer.wi }}</p>
+            
+            <p><strong>Contact Number:</strong> {{ freelancer.cn }}</p>
+        </div>
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Sign Up</title>
+    <link rel="stylesheet" href="/static/signin.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td>Enter your name</td>
+                    <td><input type="text" name="name" required></td>
+                </tr>
+                <tr>
+                    <td>Enter your email id</td>
+                    <td><input type="email" name="email" required></td>
+                </tr>
+                <tr>
+                    <td>Enter your password</td>
+                    <td><input type="password" name="password" required></td>
+                </tr>
+                <tr>
+                    <td>Place</td>
+                    <td><input type="text" name="place" required></td>
+                </tr>
+                <tr>
+                    <td>Choose your category</td>
+                    <td>
+                        <select name="category" id="category" required>
+                            <option value="">Select Category</option>
+                            {% for i in data %}
+                                <option value="{{ i.categoryname }}">{{ i.categoryname }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Choose Subcategory</td>
+                    <td>
+                        <select name="subcategory" id="subcategory">
+                            <option value="">Select Subcategory</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Your Specialisation</td>
+                    <td><input type="text" name="ys" required></td>
+                </tr>
+                <tr>
+                    <td>Basic introduction about you</td>
+                    <td><textarea name="bi" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Upload your image</td>
+                    <td><input type="file" name="ima" accept="image/*" required></td>
+                </tr>
+                <tr>
+                    <td>Introduction about your work</td>
+                    <td><textarea name="wi" required></textarea></td>
+                </tr>
+                <tr>
+                    <td>Upload a work-related image</td>
+                    <td><input type="file" name="wimg" accept="image/*" required></td>
+                </tr>
+                <tr>
+                    <td>Contact number</td>
+                    <td><input type="text" name="cn" required></td>
+                </tr>
+            </table>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <!-- JS for dynamic subcategory -->
+    <script>
+        $(document).ready(function () {
+            $('#category').change(function () {
+                var category_name = $(this).val();
+                if (category_name) {
+                    $.ajax({
+                        url: '/get-subcategories/',  // Django view URL
+                        type: 'GET',
+                        data: {
+                            category: category_name
+                        },
+                        success: function (data) {
+                            $('#subcategory').empty();
+                            if (data.length > 0) {
+                                $('#subcategory').append('<option value="">Select Subcategory</option>');
+                                $.each(data, function (index, item) {
+                                    $('#subcategory').append('<option value="' + item + '">' + item + '</option>');
+                                });
+                            } else {
+                                $('#subcategory').append('<option value="">No Subcategories</option>');
+                            }
+                        }
+                    });
+                } else {
+                    $('#subcategory').empty().append('<option value="">Select Subcategory</option>');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

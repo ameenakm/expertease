@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="/static/tblstyle.css">
+</head>
+<div class="container">
+    <h2>your oderders<small></small></h2>
+    <ul class="responsive-table">
+      <li class="table-header">
+        
+        <div class="col col-2">category  Name</div>
+        
+        <div class="col col-3">add subcategory</div>
+        
+      </li>
+      {% for i in data %}
+      <li class="table-row">
+        
+        <div class="col col-2" data-label="Customer Name">{{i.categoryname}}</div>
+     
+        <div class="col col-3" data-label="Amount"><a href="{% url 'addsubcategory' i.id %}">add</a></div>
+   
+      </li>
+      {% endfor %} 

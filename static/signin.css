@@ -1,0 +1,74 @@
+body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9f4; /* Offwhite */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+
+        .signup-container {
+            background-color: #ffffff;
+            border: 1px solid #cde3d2;
+            border-radius: 10px;
+            padding: 30px 40px;
+            box-shadow: 0 8px 16px rgba(0, 128, 0, 0.1);
+            width: 500px;
+        }
+
+        h2 {
+            color: #2e7d32; /* Deep green */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+        }
+
+        td {
+            padding: 10px 5px;
+            vertical-align: top;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #b6d8b0;
+            border-radius: 5px;
+            background-color: #f4fff3;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 60px;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #388e3c;
+        }
+
+        @media screen and (max-width: 600px) {
+            .signup-container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
